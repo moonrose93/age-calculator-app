@@ -2,11 +2,11 @@
 const dayInput = document.querySelector('.day input');
 const monthInput = document.querySelector('.month input');
 const yearInput = document.querySelector('.year input');
-const notValid1 =  document.querySelector('.not-valid1');
-const notValid2 =  document.querySelector('.not-valid2');
-const notValid3 =  document.querySelector('.not-valid3');
+const notValid1 =  document.getElementById("not-valid1");
+const notValid2 =  document.getElementById("not-valid2");
+const notValid3 =  document.getElementById("not-valid3");
 const visibilityVisible = document.querySelector('.visible');
-const colorSelector = document.querySelector('color');
+
 
 // Get the result elements
 const yearsResult = document.getElementById('years');
@@ -17,38 +17,35 @@ const daysResult = document.getElementById('days');
 function calculateAge() {
     // Clear any previous error messages
     
-
     // Get the user input values
     const day = parseInt(dayInput.value);
     const month = parseInt(monthInput.value) - 1; // Months in JavaScript are zero-based (0-11)
     const year = parseInt(yearInput.value);
 
     // Check if any of the input fields are empty or not a number
-    if (isNaN(day) || isNaN(month) || isNaN(year)) {
-      notValid1.classList.add('not-valid1');
-      notValid2.classList.add('not-valid2');
-      notValid3.classList.add('not-valid3');
-      
-        return;
+    if (isNaN(day)){
+      notValid1.classList.add("not-valid1")
     }else{
-      notValid1.classList.remove('not-valid1');
-      notValid2.classList.remove('not-valid2');
-      notValid3.classList.remove('not-valid3');
+      notValid1.classList.remove("not-valid1")
+      notValid1.classList.add("visible")
+
     }
 
-    if(isNaN(day) || isNaN(month) || isNaN(year)) {
-      notValid1.classList.add('not-valid1');
-      notValid2.classList.add('not-valid2');
-      notValid3.classList.add('not-valid3');
-      return;
+    if (isNaN(month)){
+      notValid2.classList.add("not-valid2")
+    }else{
+      notValid2.classList.remove("not-valid2")
+      notValid2.classList.add("visible")
 
-  }else{
+    }
 
-     notValid1.classList.add('visible');
-     notValid2.classList.add('visible');
-     notValid3.classList.add('visible');
-  }
+    if (isNaN(year)){
+      notValid3.classList.add("not-valid3")
+    }else{
+      notValid3.classList.remove("not-valid3")
+      notValid3.classList.add("visible")
 
+    }
 
     // Create the birth date using the user input values
     const birthDate = new Date(year, month, day);
@@ -72,4 +69,7 @@ function calculateAge() {
     yearsResult.textContent = ageInYears;
     monthsResult.textContent = ageInMonths;
     daysResult.textContent = ageInDays;
-}
+    
+    };
+
+
